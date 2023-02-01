@@ -6,17 +6,17 @@ function drag(event)
 {   event.target.classList.add("dragging");
 }
 function drop(event){
-  let current=document.getElementsByClassName("dragging");
-  let container=event.target;
-  let menuId=current[0].id;
-  let tableId=container.id;
-  let cost=menuList.get(menuId).cost;
-  let item=menuList.get(menuId).name;
-  let prevTot=tableList.get(tableId).bill;
+  const current=document.getElementsByClassName("dragging");
+  const container=event.target;
+  const menuId=current[0].id;
+  const tableId=container.id;
+  const cost=menuList.get(menuId).cost;
+  const item=menuList.get(menuId).name;
+  const prevTot=tableList.get(tableId).bill;
   previous=container.getElementsByTagName("span");
-  let newTot=prevTot+cost;
-  let prevItems=tableList.get(tableId).noOfItems;
-  let newItems=prevItems+1;
+  const newTot=prevTot+cost;
+  const prevItems=tableList.get(tableId).noOfItems;
+  const newItems=prevItems+1;
   for(let table of tableList){
     if (table[1].id===container.id)
     {
