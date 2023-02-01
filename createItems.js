@@ -18,14 +18,14 @@ function createTable(id,name,noOfItems,bill){
     newTable.setAttribute("id",id);
     newTable.setAttribute("ondragover","allowDrop(event)");
     newTable.setAttribute("ondrop","drop(event)");
-    let tableName=document.createElement("h2");
+    const tableName=document.createElement("h2");
     tableName.textContent=name;
     newTable.append(tableName);
-    let container=document.createElement("div");
-    let totBill=document.createElement("span");
+    const container=document.createElement("div");
+    const totBill=document.createElement("span");
     totBill.textContent="Rs. "+bill;
     container.append(totBill);
-    let nItems=document.createElement("span");
+    const nItems=document.createElement("span");
     nItems.textContent="| Total items: "+noOfItems;
     container.append(nItems);
     newTable.append(container);
@@ -43,14 +43,14 @@ function fillTablesSec(tableList,container){
 
 //creating list of tables
 
-let tableList=new Map();
+const tableList=new Map();
 tableList.set("table-1",new Table("table-1","Table-1"));
 tableList.set("table-2",new Table("table-2","Table-2"));
 tableList.set("table-3",new Table("table-3","Table-3"));
 
 //create a container to add each table
 
-let tableContainer=document.querySelector("#tables");
+const tableContainer=document.querySelector("#tables");
 fillTablesSec(tableList.values(),tableContainer);
 
 //menu item class
@@ -67,19 +67,19 @@ class MenuItems{
 //creating each menu item to add into menu section
 
 function createMenuItem(id,category,name,cost){
-    let newItem=document.createElement("div");
+    const newItem=document.createElement("div");
     newItem.setAttribute("class","menu-item");
     newItem.setAttribute("draggable","true");
     newItem.setAttribute("ondragstart","drag(event)")
     newItem.setAttribute("id",id);
-    let itemName=document.createElement("h2");
+    const itemName=document.createElement("h2");
     itemName.textContent=name;
     newItem.append(itemName);
-    let container=document.createElement("div");
-    let itemCost=document.createElement("span");
+    const container=document.createElement("div");
+    const itemCost=document.createElement("span");
     itemCost.textContent="Rs. " + cost;
     container.append(itemCost);
-    let itemCat=document.createElement("span");
+    const itemCat=document.createElement("span");
     itemCat.setAttribute("class","categ");
     itemCat.textContent=category;
     container.append(itemCat);
