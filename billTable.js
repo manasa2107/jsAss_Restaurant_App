@@ -1,9 +1,9 @@
 let currTable, itemCount, targetId, orderData;
-let tableHeader=document.querySelector(".table-name");
-let popUp=document.querySelector(".table-list");
-let totalTables=document.querySelectorAll(".table-item");
-let billAmount=document.getElementById("total");
-let tableBody = document.querySelector(".bill");
+const tableHeader=document.querySelector(".table-name");
+const popUp=document.querySelector(".table-list");
+const totalTables=document.querySelectorAll(".table-item");
+const billAmount=document.getElementById("total");
+const tableBody = document.querySelector(".bill");
 
 //create popup when a particular table is clicked.
 
@@ -23,31 +23,29 @@ for (let eachTable of totalTables) {
 
   //to add blur effect in background
 
-  function toggle(){
-    var blur=document.getElementById("blur");
+  const toggle = () => {
+    let blur=document.getElementById("blur");
     blur.classList.add("active");
-    var pop=document.getElementById("pop")
+    let pop=document.getElementById("pop");
     pop.classList.add("active");
   }
 
   //To display updated amount in the popup
 
-  function totalBill() {
-    billAmount.textContent = "Total : " + currTable.bill;
-  }
-
+  const totalBill = ()=> billAmount.textContent = "Total : " + currTable.bill;
+  
   //function to add and delete rows.
 
 function addRows(item, count) {
-    let newRow = document.createElement("tr");
-    let itemName = document.createElement("td");
+    const newRow = document.createElement("tr");
+    const itemName = document.createElement("td");
     itemName.textContent = item;
     newRow.appendChild(itemName);
-    let itemPrice = document.createElement("td");
+    const itemPrice = document.createElement("td");
     itemPrice.textContent = getCost(item);
     newRow.appendChild(itemPrice);
-    let itemQuantity = document.createElement("td");
-    let inputBar = document.createElement("input");
+    const itemQuantity = document.createElement("td");
+    const inputBar = document.createElement("input");
     inputBar.setAttribute("min", "1");
     inputBar.onchange =  (e) => {
       alterItem(item, parseInt(e.currentTarget.value));
@@ -62,10 +60,10 @@ function addRows(item, count) {
     inputBar.value = count;
     itemQuantity.appendChild(inputBar);
     newRow.appendChild(itemQuantity);
-    let totalPrice=document.createElement("td");
+    const totalPrice=document.createElement("td");
     totalPrice.textContent=currTable.itemList.get(item)*getCost(item);
     newRow.appendChild(totalPrice);
-    let deleteItem = document.createElement("td");
+    const deleteItem = document.createElement("td");
     //let deleteIcon = document.createElement("span");
      deleteIcon = document.createElement("img"); 
     deleteIcon.src = "delete.jpg";
@@ -99,7 +97,7 @@ function addRows(item, count) {
   //To update each table values.
 
   function alterItem(item, value) {
-    let prev = currTable.itemList.get(item);
+    const prev = currTable.itemList.get(item);
     cost = getCost(item);
     itemCount = value - prev;
     currTable.bill += (value - prev) * cost;
@@ -133,18 +131,16 @@ function addRows(item, count) {
 
 //to delete the item from table's itemList
 
-  function deleteFoodItem(foodItem) {
-    currTable.itemList.delete(foodItem);
-  }
+  const deleteFoodItem = (foodItem) => currTable.itemList.delete(foodItem);
+
   
 //To close the table popup and remove blur effect.
 
-  function closePopUp() {
+  let closePopUp = () => {
     popUp.style.display = "none";
     tableBody.textContent = "";
-    var blur=document.getElementById("blur");
+    let  blur=document.getElementById("blur");
     blur.classList.remove("active");
-    var pop=document.getElementById("pop")
+    let pop=document.getElementById("pop")
     pop.classList.remove("active");
-
   }
