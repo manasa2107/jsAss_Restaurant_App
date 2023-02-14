@@ -14,7 +14,7 @@ for (let eachTable of totalTables) {
       tableHeader.textContent = tableList.get(eachTable.id).name + " | Order Details";
       currTable = tableList.get(e.currentTarget.id);
       totalBill();
-      orderDetails = tableList.get(eachTable.id).itemList;
+      let orderDetails = tableList.get(eachTable.id).itemList;
       for (let [item, count] of orderDetails) {
         tableBody.append(addRows(item, count));
       }
@@ -64,10 +64,8 @@ function addRows(item, count) {
     totalPrice.textContent=currTable.itemList.get(item)*getCost(item);
     newRow.appendChild(totalPrice);
     const deleteItem = document.createElement("td");
-    //let deleteIcon = document.createElement("span");
-     deleteIcon = document.createElement("img"); 
+     let deleteIcon = document.createElement("img"); 
     deleteIcon.src = "delete.jpg";
-   //deleteIcon.textContent="Delete";
     deleteIcon.setAttribute("class", "trash");
     deleteIcon.onclick = (e) => {
       currTable.bill -= currTable.itemList.get(item) * getCost(item);
@@ -98,7 +96,7 @@ function addRows(item, count) {
 
   function alterItem(item, value) {
     const prev = currTable.itemList.get(item);
-    cost = getCost(item);
+    let cost = getCost(item);
     itemCount = value - prev;
     currTable.bill += (value - prev) * cost;
     currTable.noOfItems += itemCount;
